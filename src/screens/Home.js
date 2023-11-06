@@ -2,8 +2,10 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 
 const Home = () => {
+  // State: a counter value
   const [counter, setCounter] = useState(0);
 
+  // Action: code that causes an update to the state when something happens
   const handleDecrement = () => {
     setCounter(counter - 1);
   };
@@ -12,6 +14,7 @@ const Home = () => {
     setCounter(counter + 1);
   };
 
+  // View: the UI definition
   return (
     <View style={styles.container}>
       <Text style={styles.title_text}>Counter App</Text>
