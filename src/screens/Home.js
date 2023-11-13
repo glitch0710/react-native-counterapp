@@ -1,24 +1,31 @@
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import React, { useState } from "react";
+import React, { useDebugValue, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement } from "../redux/actions/counterActions";
 
 const Home = () => {
-  // State: a counter value
-  const [counter, setCounter] = useState(0);
+  const dispatch = useDispatch();
+
+  const count = useSelector((store) => store.count.count);
+
+//   const [counter, setCounter] = useState(0);
 
   // Action: code that causes an update to the state when something happens
   const handleDecrement = () => {
-    setCounter(counter - 1);
+    dispatch(decrement())
+    // setCounter(counter - 1);
   };
 
   const handleIncrement = () => {
-    setCounter(counter + 1);
+    dispatch(increment())
+    // setCounter(counter + 1);
   };
 
   // View: the UI definition
   return (
     <View style={styles.container}>
       <Text style={styles.title_text}>Counter App</Text>
-      <Text style={styles.counter_text}>{counter}</Text>
+      <Text style={styles.counter_text}>{count}</Text>
 
       <TouchableOpacity onPress={handleIncrement} style={styles.btn}>
         <Text style={styles.btn_text}> Increment </Text>
